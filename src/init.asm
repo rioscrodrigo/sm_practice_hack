@@ -6,7 +6,7 @@ org $808455
     JML init_code
 
 
-org $81F000
+org $81F0B0
 print pc, " init start"
 init_code:
 {
