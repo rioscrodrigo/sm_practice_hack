@@ -176,15 +176,15 @@
 ; Presets
 ; ------------
 
-!ram_load_preset = $7FFC00
-!ram_cgram_cache = $7FFC02 ; 0x14 bytes
+ !ram_load_preset = $7FFC00
+ !ram_cgram_cache = $7FFC02 ; 0x14 bytes
 
-!category_combined = 0
-!category_rbo = 1
-!category_kpdr25 = 2
-!category_gtclassic = 3
-!category_14low = 4
-!category_allboss = 5
+; !category_combined = 0
+; !category_rbo = 1
+; !category_kpdr25 = 2
+; !category_gtclassic = 3
+; !category_14low = 4
+; !category_allboss = 5
 
 ; ----------
 ; Save/load
