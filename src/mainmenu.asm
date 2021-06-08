@@ -87,37 +87,37 @@ action_presets_submenu:
 
 preset_category_submenus:
 {
-    dw #PresetsMenuPrkd
-    dw #PresetsMenuKpdr21
+    dw #PresetsMenuRouteA
+    dw #PresetsMenuRouteB
     dw #PresetsMenuHundo
-    dw #PresetsMenu100early
-    dw #PresetsMenuRbo
-    dw #PresetsMenuPkrd
-    dw #PresetsMenuKpdr25
-    dw #PresetsMenuGtclassic
-    dw #PresetsMenu14ice
-    dw #PresetsMenu14speed
-    dw #PresetsMenuAllbosskpdr
-    dw #PresetsMenuAllbosspkdr
-    dw #PresetsMenuAllbossprkd    
+    ; dw #PresetsMenu100early
+    ; dw #PresetsMenuRbo
+    ; dw #PresetsMenuPkrd
+    ; dw #PresetsMenuKpdr25
+    ; dw #PresetsMenuGtclassic
+    ; dw #PresetsMenu14ice
+    ; dw #PresetsMenu14speed
+    ; dw #PresetsMenuAllbosskpdr
+    ; dw #PresetsMenuAllbosspkdr
+    ; dw #PresetsMenuAllbossprkd    
     dw #$0000
 }
 
 preset_category_banks:
 {
-    dw #PresetsMenuPrkd>>16
-    dw #PresetsMenuKpdr21>>16
+    dw #PresetsMenuRouteA>>16
+    dw #PresetsMenuRouteB>>16
     dw #PresetsMenuHundo>>16
-    dw #PresetsMenu100early>>16
-    dw #PresetsMenuRbo>>16
-    dw #PresetsMenuPkrd>>16
-    dw #PresetsMenuKpdr25>>16
-    dw #PresetsMenuGtclassic>>16
-    dw #PresetsMenu14ice>>16
-    dw #PresetsMenu14speed>>16
-    dw #PresetsMenuAllbosskpdr>>16
-    dw #PresetsMenuAllbosspkdr>>16
-    dw #PresetsMenuAllbossprkd>>16
+    ; dw #PresetsMenu100early>>16
+    ; dw #PresetsMenuRbo>>16
+    ; dw #PresetsMenuPkrd>>16
+    ; dw #PresetsMenuKpdr25>>16
+    ; dw #PresetsMenuGtclassic>>16
+    ; dw #PresetsMenu14ice>>16
+    ; dw #PresetsMenu14speed>>16
+    ; dw #PresetsMenuAllbosskpdr>>16
+    ; dw #PresetsMenuAllbosspkdr>>16
+    ; dw #PresetsMenuAllbossprkd>>16
     dw #$0000
 
 }
@@ -128,17 +128,17 @@ preset_category_banks:
 
 MainMenu:
     dw #mm_goto_equipment
-    ; dw #mm_goto_presets
-    ; dw #mm_goto_select_preset_category
-    ; dw #mm_goto_teleport
-    ; dw #mm_goto_events
-    ; dw #mm_goto_misc
-    ; dw #mm_goto_infohud
-    ; dw #mm_goto_gamemenu
-    ; dw #mm_goto_rngmenu
-    ; dw #mm_goto_ctrlsmenu
+    dw #mm_goto_presets
+    dw #mm_goto_select_preset_category
+    dw #mm_goto_teleport
+    dw #mm_goto_events
+    dw #mm_goto_misc
+    dw #mm_goto_infohud
+    dw #mm_goto_gamemenu
+    dw #mm_goto_rngmenu
+    dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM REIMAGINED PRACTICE HACK 0.1")
+    %cm_header("SM REIMAGINED PH 0.1")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -177,21 +177,21 @@ mm_goto_ctrlsmenu:
 pushpc
 
 org $fe8000
-incsrc presets/prkd_menu.asm
-incsrc presets/kpdr21_menu.asm
+incsrc presets/routea_menu.asm
+incsrc presets/routeb_menu.asm
 incsrc presets/hundo_menu.asm
-incsrc presets/100early_menu.asm
-incsrc presets/rbo_menu.asm
-incsrc presets/kpdr25_menu.asm
-incsrc presets/gtclassic_menu.asm
+; incsrc presets/100early_menu.asm
+; incsrc presets/rbo_menu.asm
+; incsrc presets/kpdr25_menu.asm
+; incsrc presets/gtclassic_menu.asm
 
-org $ff8000
-incsrc presets/14ice_menu.asm
-incsrc presets/14speed_menu.asm
-incsrc presets/allbosskpdr_menu.asm
-incsrc presets/allbosspkdr_menu.asm
-incsrc presets/allbossprkd_menu.asm
-incsrc presets/pkrd_menu.asm
+; org $ff8000
+; incsrc presets/14ice_menu.asm
+; incsrc presets/14speed_menu.asm
+; incsrc presets/allbosskpdr_menu.asm
+; incsrc presets/allbosspkdr_menu.asm
+; incsrc presets/allbossprkd_menu.asm
+; incsrc presets/pkrd_menu.asm
 
 pullpc
 
@@ -214,14 +214,14 @@ action_load_preset:
 
 EquipmentMenu:
     dw #eq_refill
-;  dw #eq_toggle_category
-;  dw #eq_goto_toggleitems
-;    dw #eq_goto_togglebeams
-;    dw #eq_setetanks
-;    dw #eq_setreserves
-;    dw #eq_setmissiles
-;    dw #eq_setsupers
-;    dw #eq_setpbs
+    dw #eq_toggle_category
+    dw #eq_goto_toggleitems
+    dw #eq_goto_togglebeams
+    dw #eq_setetanks
+    dw #eq_setreserves
+    dw #eq_setmissiles
+    dw #eq_setsupers
+    dw #eq_setpbs
     dw #$0000
     %cm_header("EQUIPMENT")
 
@@ -296,13 +296,13 @@ eq_setpbs:
 
 ToggleCategoryMenu:
    dw #cat_100
-   dw #cat_any_new
-   dw #cat_any_old
-   dw #cat_14ice
-   dw #cat_14speed
-   dw #cat_gt_code
-   dw #cat_rbo
-   dw #cat_any_glitched
+   dw #cat_any_a
+   dw #cat_any_b
+;    dw #cat_14ice
+;    dw #cat_14speed
+;    dw #cat_gt_code
+;    dw #cat_rbo
+;    dw #cat_any_glitched
    dw #cat_nothing
    dw #$0000
    %cm_header("TOGGLE CATEGORY")
@@ -311,29 +311,29 @@ ToggleCategoryMenu:
 cat_100:
     %cm_jsr("100%", action_category, #$0000)
 
-cat_any_new:
-    %cm_jsr("Any% PRKD", action_category, #$0001)
+cat_any_a:
+    %cm_jsr("Any% Route A", action_category, #$0001)
 
-cat_any_old:
-    %cm_jsr("Any% KPDR", action_category, #$0002)
+cat_any_b:
+    %cm_jsr("Any% Route B", action_category, #$0002)
 
-cat_14ice:
-    %cm_jsr("14% Ice", action_category, #$0003)
+; cat_14ice:
+;     %cm_jsr("14% Ice", action_category, #$0003)
 
-cat_14speed:
-    %cm_jsr("14% Speed", action_category, #$0004)
+; cat_14speed:
+;     %cm_jsr("14% Speed", action_category, #$0004)
 
-cat_gt_code:
-    %cm_jsr("GT Code", action_category, #$0005)
+; cat_gt_code:
+;     %cm_jsr("GT Code", action_category, #$0005)
 
-cat_rbo:
-    %cm_jsr("RBO", action_category, #$0006)
+; cat_rbo:
+;     %cm_jsr("RBO", action_category, #$0006)
 
-cat_any_glitched:
-    %cm_jsr("Any% glitched", action_category, #$0007)
+; cat_any_glitched:
+;     %cm_jsr("Any% glitched", action_category, #$0007)
 
 cat_nothing:
-    %cm_jsr("Nothing", action_category, #$0008)
+    %cm_jsr("Nothing", action_category, #$0003)
 
 
 action_category:
@@ -373,14 +373,14 @@ action_category:
 
   .table
     ;  Items,  Beams,  Health, Miss,   Supers, PBs,    Reserv, Dummy
-    dw #$F32F, #$100F, #$05db, #$00E6, #$0032, #$0032, #$0190, #$0000        ;    100%
-    dw #$3125, #$1007, #$018F, #$000F, #$000A, #$0005, #$0000, #$0000        ;    any% new
-    dw #$3325, #$100B, #$018F, #$000F, #$000A, #$0005, #$0000, #$0000        ;   any% old
-    dw #$1025, #$1002, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;    14% ice
-    dw #$3025, #$1000, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;    14% speed
-    dw #$F32F, #$100F, #$02BC, #$0064, #$0014, #$0014, #$012C, #$0000        ;   gt code
-    dw #$710C, #$1001, #$031F, #$001E, #$0019, #$0014, #$0064, #$0000        ;   rbo
-    dw #$9004, #$0000, #$00C7, #$0005, #$0005, #$0005, #$0000, #$0000        ;    any% glitched
+    dw #$F32F, #$100F, #$05db, #$00E6, #$0032, #$0032, #$0190, #$0000        ;   100%
+    dw #$3125, #$1007, #$01F3, #$0014, #$000A, #$000A, #$0000, #$0000        ;   any% A
+    dw #$7F2F, #$100B, #$01F3, #$0014, #$000A, #$000A, #$0000, #$0000        ;   any% B
+    ; dw #$1025, #$1002, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;   14% ice
+    ; dw #$3025, #$1000, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;   14% speed
+    ; dw #$F32F, #$100F, #$02BC, #$0064, #$0014, #$0014, #$012C, #$0000        ;   gt code
+    ; dw #$710C, #$1001, #$031F, #$001E, #$0019, #$0014, #$0064, #$0000        ;   rbo
+    ; dw #$9004, #$0000, #$00C7, #$0005, #$0005, #$0005, #$0000, #$0000        ;   any% glitched
     dw #$0000, #$0000, #$0063, #$0000, #$0000, #$0000, #$0000, #$0000        ;   nothing
 }
 
@@ -473,19 +473,19 @@ tb_plasmabeam:
 
 SelectPresetCategoryMenu:
     dw #precat_current
-    dw #precat_prkd
-    dw #precat_kpdr21
+    dw #precat_a
+    dw #precat_b
     dw #precat_hundo
-    dw #precat_100early
-    dw #precat_rbo
-    dw #precat_pkrd
-    dw #precat_kpdr25
-    dw #precat_gtclassic
-    dw #precat_14ice
-    dw #precat_14speed
-    dw #precat_allbosskpdr
-    dw #precat_allbosspkdr
-    dw #precat_allbossprkd
+    ; dw #precat_100early
+    ; dw #precat_rbo
+    ; dw #precat_pkrd
+    ; dw #precat_kpdr25
+    ; dw #precat_gtclassic
+    ; dw #precat_14ice
+    ; dw #precat_14speed
+    ; dw #precat_allbosskpdr
+    ; dw #precat_allbosspkdr
+    ; dw #precat_allbossprkd
     dw #$0000
     %cm_header("SELECT PRESET CATEGORY")
 
@@ -494,60 +494,60 @@ precat_current:
     dl #!sram_preset_category
     dw #$0000
     db #$28, "CURRENT PRESET", #$FF
-        db #$28, "       PRKD", #$FF ; Note the "y" ;)
-        db #$28, "       KPDR", #$FF
-        db #$28, "   100 LATE", #$FF
-        db #$28, "  100 EARLY", #$FF
-        db #$28, "        RBO", #$FF
-        db #$28, "       PKRD", #$FF
-        db #$28, "     KPDR25", #$FF
-        db #$28, " GT CLASSIC", #$FF
-        db #$28, "     14 ICE", #$FF
-        db #$28, "   14 SPEED", #$FF
-        db #$28, "   ALL KPDR", #$FF
-        db #$28, "   ALL PKDR", #$FF
-        db #$28, "   ALL PRKD", #$FF
+        db #$28, "          A", #$FF ; Note the "y" ;)
+        db #$28, "          B", #$FF
+        db #$28, "        100", #$FF
+        ; db #$28, "  100 EARLY", #$FF
+        ; db #$28, "        RBO", #$FF
+        ; db #$28, "       PKRD", #$FF
+        ; db #$28, "     KPDR25", #$FF
+        ; db #$28, " GT CLASSIC", #$FF
+        ; db #$28, "     14 ICE", #$FF
+        ; db #$28, "   14 SPEED", #$FF
+        ; db #$28, "   ALL KPDR", #$FF
+        ; db #$28, "   ALL PKDR", #$FF
+        ; db #$28, "   ALL PRKD", #$FF
     db #$FF
     db #$FF
 
-precat_prkd:
-    %cm_jsr("Any% PRKD", #action_select_preset_category, #$0000)
+precat_a:
+    %cm_jsr("Any% A Route", #action_select_preset_category, #$0000)
 
-precat_kpdr21:
-    %cm_jsr("Any% KPDR", #action_select_preset_category, #$0001)
+precat_b:
+    %cm_jsr("Any% B Route", #action_select_preset_category, #$0001)
 
 precat_hundo:
-    %cm_jsr("100% Late Crocomire", #action_select_preset_category, #$0002)
+    %cm_jsr("100%", #action_select_preset_category, #$0002)
 
-precat_100early:
-    %cm_jsr("100% Early Crocomire", #action_select_preset_category, #$0003)
+; precat_100early:
+;     %cm_jsr("100% Early Crocomire", #action_select_preset_category, #$0003)
 
-precat_rbo:
-    %cm_jsr("Reverse Boss Order", #action_select_preset_category, #$0004)
+; precat_rbo:
+;     %cm_jsr("Reverse Boss Order", #action_select_preset_category, #$0004)
 
-precat_pkrd:
-    %cm_jsr("Any% PKRD", #action_select_preset_category, #$0005)
+; precat_pkrd:
+;     %cm_jsr("Any% PKRD", #action_select_preset_category, #$0005)
 
-precat_kpdr25:
-    %cm_jsr("Any% KPDR Early Ice", #action_select_preset_category, #$0006)
+; precat_kpdr25:
+;     %cm_jsr("Any% KPDR Early Ice", #action_select_preset_category, #$0006)
 
-precat_gtclassic:
-    %cm_jsr("GT Classic", #action_select_preset_category, #$0007)
+; precat_gtclassic:
+;     %cm_jsr("GT Classic", #action_select_preset_category, #$0007)
 
-precat_14ice:
-    %cm_jsr("Low% Ice", #action_select_preset_category, #$0008)
+; precat_14ice:
+;     %cm_jsr("Low% Ice", #action_select_preset_category, #$0008)
 
-precat_14speed:
-    %cm_jsr("Low% Speed", #action_select_preset_category, #$0009)
+; precat_14speed:
+;     %cm_jsr("Low% Speed", #action_select_preset_category, #$0009)
 
-precat_allbosskpdr:
-    %cm_jsr("All Bosses KPDR", #action_select_preset_category, #$000A)
+; precat_allbosskpdr:
+;     %cm_jsr("All Bosses KPDR", #action_select_preset_category, #$000A)
 
-precat_allbosspkdr:
-    %cm_jsr("All Bosses PKDR", #action_select_preset_category, #$000B)
+; precat_allbosspkdr:
+;     %cm_jsr("All Bosses PKDR", #action_select_preset_category, #$000B)
 
-precat_allbossprkd:
-    %cm_jsr("All Bosses PRKD", #action_select_preset_category, #$000C)
+; precat_allbossprkd:
+;     %cm_jsr("All Bosses PRKD", #action_select_preset_category, #$000C)
 
 action_select_preset_category:
 {
@@ -563,83 +563,175 @@ action_select_preset_category:
 ; ; ---------------
 
 TeleportMenu:
-    dw #tel_crateriaship
-    dw #tel_crateriaparlor
-    dw #tel_brinstarpink
-    dw #tel_brinstargreenshaft
-    dw #tel_brinstargreenetecoons
-    dw #tel_brinstarkraid
-    dw #tel_brinstarredtower
-    dw #tel_norfairgrapple
-    dw #tel_norfairbubble
-    dw #tel_norfairtunnel
-    dw #tel_norfaircrocomire
-    dw #tel_norfairlnelevator
-    dw #tel_norfairridley
-    dw #tel_wreckedship
-    dw #tel_maridiatube
-    dw #tel_maridiaelevator
-    dw #tel_maridiaaqueduct
-    dw #tel_maridiadraygon
-    dw #tel_tourianentrance
-    dw #tel_tourianbbyskip
-    dw #tel_tourianmb
+
+    dw #tel_goto_crateria
+    dw #tel_goto_brinstar
+    dw #tel_goto_norfair
+    dw #tel_goto_wreckedship
+    dw #tel_goto_maridia
+    dw #tel_goto_tourian
     dw #$0000
     %cm_header("TELEPORT")
+
+
+; ------------------
+; Crateria Teleport Menu
+; ------------------
+
+
+tel_goto_crateria:
+    %cm_submenu("Crateria", #GoToCrateriaMenu)
+
+GoToCrateriaMenu:
+    dw #tel_crateriaship
+    dw #tel_cateriabombtorizo
+    dw #tel_cateriaunderwater
+    dw #tel_cateriaoldlab
+    dw #$0000
+    %cm_header("CRATERIA")
+
 
 tel_crateriaship:
     %cm_jsr("Crateria Ship", #action_teleport, #$0000)
 
-tel_crateriaparlor:
-    %cm_jsr("Crateria Parlor", #action_teleport, #$0001)
+tel_cateriabombtorizo:
+    %cm_jsr("Crateria Bomb Torizo", #action_teleport, #$0001)
+
+tel_cateriaunderwater:
+    %cm_jsr("Crateria Underwater", #action_teleport, #$0002)
+
+tel_cateriaoldlab:
+    %cm_jsr("Crateria Old Lab", #action_teleport, #$0003)
+
+
+; ------------------
+; Brinstar Teleport Menu
+; ------------------
+
+
+tel_goto_brinstar:
+    %cm_submenu("Brinstar", #GoToBrinstarMenu)
+
+GoToBrinstarMenu:
+    dw #tel_brinstarentrace
+    dw #tel_brinstarpink
+    dw #tel_brinstarredtower
+    dw #tel_brinstarkraid
+    dw #tel_brinstarredtowerwaterway
+    dw #$0000
+    %cm_header("BRINSTAR")
+
+
+tel_brinstarentrace:
+    %cm_jsr("Brinstar Entrace", #action_teleport, #$0100)
 
 tel_brinstarpink:
-    %cm_jsr("Brinstar Pink Spospo", #action_teleport, #$0100)
+    %cm_jsr("Brinstar Pink", #action_teleport, #$0101)
 
-tel_brinstargreenshaft:
-    %cm_jsr("Brinstar Green Shaft", #action_teleport, #$0101)
-
-tel_brinstargreenetecoons:
-    %cm_jsr("Brinstar Green Etecoons", #action_teleport, #$0102)
+tel_brinstarredtower:
+    %cm_jsr("Brinstar Red Tower", #action_teleport, #$0102)
 
 tel_brinstarkraid:
     %cm_jsr("Brinstar Kraid", #action_teleport, #$0103)
 
-tel_brinstarredtower:
-    %cm_jsr("Brinstar Red Tower", #action_teleport, #$0104)
+tel_brinstarredtowerwaterway:
+    %cm_jsr("Brinstar Red Tower Waterway", #action_teleport, #$0104)
 
-tel_norfairgrapple:
-    %cm_jsr("Norfair Grapple", #action_teleport, #$0200)
+; ------------------
+; Norfair Teleport Menu
+; ------------------
 
-tel_norfairbubble:
-    %cm_jsr("Norfair Bubble Mountain", #action_teleport, #$0201)
+tel_goto_norfair:
+    %cm_submenu("Norfair", #GoToNorfairMenu)
 
-tel_norfairtunnel:
-    %cm_jsr("Norfair Tunnel", #action_teleport, #$0202)
+GoToNorfairMenu:
+    dw #tel_norfairentrace
+    dw #tel_norfairsupermissiles
+    dw #tel_norfairbubbleroom
+    dw #tel_norfaircrocomire
+    dw #tel_norfairbubblemountain
+    dw #tel_norfairridley
+    dw #$0000
+    %cm_header("NORFAIR")
+
+
+tel_norfairentrace:
+    %cm_jsr("Norfair Entrace", #action_teleport, #$0202)
+
+tel_norfairsupermissiles:
+    %cm_jsr("Norfair Super Missiles", #action_teleport, #$0200)
+
+tel_norfairbubbleroom:
+    %cm_jsr("Norfair Bubble Room", #action_teleport, #$0201)
 
 tel_norfaircrocomire:
     %cm_jsr("Norfair Crocomire", #action_teleport, #$0203)
 
-tel_norfairlnelevator:
-    %cm_jsr("Norfair LN Elevator", #action_teleport, #$0204)
+tel_norfairbubblemountain:
+    %cm_jsr("Norfair Bubble Mountain", #action_teleport, #$0204)
 
 tel_norfairridley:
     %cm_jsr("Norfair Ridley", #action_teleport, #$0205)
 
+; ------------------
+; Wrecked Ship Teleport Menu
+; ------------------
+
+tel_goto_wreckedship:
+    %cm_submenu("Wrecked Ship", #GoToWreckedShipMenu)
+
+GoToWreckedShipMenu:
+    dw #tel_wreckedship
+    dw #$0000
+    %cm_header("WRECKED SHIP")
+
 tel_wreckedship:
     %cm_jsr("Wrecked Ship", #action_teleport, #$0300)
 
-tel_maridiatube:
-    %cm_jsr("Maridia Tube", #action_teleport, #$0400)
+; ------------------
+; Maridia Teleport Menu
+; ------------------
+
+tel_goto_maridia:
+    %cm_submenu("Maridia", #GoToMaridiaMenu)
+
+GoToMaridiaMenu:
+    dw #tel_maridiaelevator
+    dw #tel_maridiaelevator2  
+    dw #tel_maridiaupper
+    dw #tel_maridialower
+    dw #tel_maridiadraygon
+    dw #$0000
+    %cm_header("MARIDIA")
 
 tel_maridiaelevator:
-    %cm_jsr("Maridia Elevator", #action_teleport, #$0401)
+    %cm_jsr("Maridia Elevator", #action_teleport, #$0400)
 
-tel_maridiaaqueduct:
-    %cm_jsr("Maridia Aqueduct", #action_teleport, #$0402)
+tel_maridiaelevator2:
+    %cm_jsr("Maridia Elevator 2", #action_teleport, #$0401)
+
+tel_maridiaupper:
+    %cm_jsr("Maridia Upper", #action_teleport, #$0402)
+
+tel_maridialower:
+    %cm_jsr("Maridia Lower", #action_teleport, #$0403)
 
 tel_maridiadraygon:
-    %cm_jsr("Maridia Draygon", #action_teleport, #$0403)
+    %cm_jsr("Maridia Draygon", #action_teleport, #$0404)
+
+; ------------------
+; Tourian Teleport Menu
+; ------------------
+
+tel_goto_tourian:
+    %cm_submenu("Tourian", #GoToTourianMenu)
+
+GoToTourianMenu:
+    dw #tel_tourianentrance
+    dw #tel_tourianbbyskip
+    dw #tel_tourianmb
+    dw #$0000
+    %cm_header("TOURIAN")
 
 tel_tourianentrance:
     %cm_jsr("Tourian Entrance", #action_teleport, #$0501)

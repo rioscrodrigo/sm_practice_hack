@@ -165,19 +165,19 @@ preset_to_memory:
 
 preset_banks:
 {
-  dw preset_prkd_crateria_ship>>16
-  dw preset_kpdr21_crateria_ship>>16
+  dw preset_routea_crateria_ship>>16
+  dw preset_routeb_crateria_ship>>16
   dw preset_hundo_bombs_ceres_elevator>>16
-  dw preset_100early_crateria_ceres_elevator>>16
-  dw preset_rbo_bombs_ceres_elevator>>16
-  dw preset_pkrd_crateria_ship>>16
-  dw preset_kpdr25_bombs_ceres_elevator>>16
-  dw preset_gtclassic_crateria_ship>>16
-  dw preset_14ice_crateria_ceres_elevator>>16
-  dw preset_14speed_crateria_ceres_elevator>>16
-  dw preset_allbosskpdr_crateria_ceres_elevator>>16
-  dw preset_allbosspkdr_crateria_ceres_elevator>>16
-  dw preset_allbossprkd_crateria_ceres_elevator>>16
+  ; dw preset_100early_crateria_ceres_elevator>>16
+  ; dw preset_rbo_bombs_ceres_elevator>>16
+  ; dw preset_pkrd_crateria_ship>>16
+  ; dw preset_kpdr25_bombs_ceres_elevator>>16
+  ; dw preset_gtclassic_crateria_ship>>16
+  ; dw preset_14ice_crateria_ceres_elevator>>16
+  ; dw preset_14speed_crateria_ceres_elevator>>16
+  ; dw preset_allbosskpdr_crateria_ceres_elevator>>16
+  ; dw preset_allbosspkdr_crateria_ceres_elevator>>16
+  ; dw preset_allbossprkd_crateria_ceres_elevator>>16
 }
 
 print pc, " presets end"
@@ -261,69 +261,69 @@ org $E68000
   print pc, " hundo data end"
 
   ; 2EAA (length in hex)
-  print pc, " prkd data start"
-  incsrc presets/prkd_data.asm
-  print pc, " prkd data end"
+  print pc, " routea data start"
+  incsrc presets/routea_data.asm
+  print pc, " routea data end"
 
 org $E78000
   ; 2FF6 (length in hex)
-  print pc, " kpdr21 data start"
-  incsrc presets/kpdr21_data.asm
-  print pc, " kpdr21 data end"
+  print pc, " routeb data start"
+  incsrc presets/routeb_data.asm
+  print pc, " routeb data end"
 
-  ; 3274 (length in hex)
-  print pc, " rbo data start"
-  incsrc presets/rbo_data.asm
-  print pc, " rbo data end"
+;   ; 3274 (length in hex)
+;   print pc, " rbo data start"
+;   incsrc presets/rbo_data.asm
+;   print pc, " rbo data end"
 
-org $E88000
-  ; 2B5E (length in hex)
-  print pc, " gtclassic data start"
-  incsrc presets/gtclassic_data.asm
-  print pc, " gtclassic data end"
+; org $E88000
+;   ; 2B5E (length in hex)
+;   print pc, " gtclassic data start"
+;   incsrc presets/gtclassic_data.asm
+;   print pc, " gtclassic data end"
 
-  ; 1E95 (length in hex)
-  print pc, " 14ice data start"
-  incsrc presets/14ice_data.asm
-  print pc, " 14ice data end"
+;   ; 1E95 (length in hex)
+;   print pc, " 14ice data start"
+;   incsrc presets/14ice_data.asm
+;   print pc, " 14ice data end"
 
-  ; 1EE6 (length in hex)
-  print pc, " 14speed data start"
-  incsrc presets/14speed_data.asm
-  print pc, " 14speed data end"
+;   ; 1EE6 (length in hex)
+;   print pc, " 14speed data start"
+;   incsrc presets/14speed_data.asm
+;   print pc, " 14speed data end"
 
-org $E98000
+; org $E98000
   
-  ; 2400 (length in hex)
-  print pc, " allbosskpdr data start"
-  incsrc presets/allbosskpdr_data.asm
-  print pc, " allbosskpdr data end"
+;   ; 2400 (length in hex)
+;   print pc, " allbosskpdr data start"
+;   incsrc presets/allbosskpdr_data.asm
+;   print pc, " allbosskpdr data end"
 
-  ; 2484 (length in hex)
-  print pc, " allbosspkdr data start"
-  incsrc presets/allbosspkdr_data.asm
-  print pc, " allbosspkdr data end"
+;   ; 2484 (length in hex)
+;   print pc, " allbosspkdr data start"
+;   incsrc presets/allbosspkdr_data.asm
+;   print pc, " allbosspkdr data end"
 
-  ; 2568 (length in hex)
-  print pc, " allbossprkd data start"
-  incsrc presets/allbossprkd_data.asm
-  print pc, " allbossprkd data end"    
+;   ; 2568 (length in hex)
+;   print pc, " allbossprkd data start"
+;   incsrc presets/allbossprkd_data.asm
+;   print pc, " allbossprkd data end"    
 
-org $EA8000
+; org $EA8000
   
-  ; 423C (length in hex)
-  print pc, " 100early data start"
-  incsrc presets/100early_data.asm
-  print pc, " 100early data end"
+;   ; 423C (length in hex)
+;   print pc, " 100early data start"
+;   incsrc presets/100early_data.asm
+;   print pc, " 100early data end"
 
-  ; 1E3A (length in hex)
-  print pc, " kpdr25 data start"
-  incsrc presets/kpdr25_data.asm
-  print pc, " kpdr25 data end"
+;   ; 1E3A (length in hex)
+;   print pc, " kpdr25 data start"
+;   incsrc presets/kpdr25_data.asm
+;   print pc, " kpdr25 data end"
 
-org $EB8000
+; org $EB8000
   
- ; 2EBC (length in hex)
- print pc, " pkrd data start"
- incsrc presets/pkrd_data.asm
- print pc, " pkrd data end"
+;  ; 2EBC (length in hex)
+;  print pc, " pkrd data start"
+;  incsrc presets/pkrd_data.asm
+;  print pc, " pkrd data end"
