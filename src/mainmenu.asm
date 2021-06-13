@@ -144,31 +144,31 @@ mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
 
 mm_goto_presets:
-   %cm_jsr("Category Presets", #action_presets_submenu, #$0000)
+    %cm_jsr("Category Presets", #action_presets_submenu, #$0000)
 
 mm_goto_select_preset_category:
-   %cm_submenu("Select Preset Category", #SelectPresetCategoryMenu)
+    %cm_submenu("Select Preset Category", #SelectPresetCategoryMenu)
 
 mm_goto_teleport:
-   %cm_submenu("Teleport", #TeleportMenu)
+    %cm_submenu("Teleport", #TeleportMenu)
 
 mm_goto_events:
-   %cm_submenu("Events", #EventsMenu)
+    %cm_submenu("Events", #EventsMenu)
 
 mm_goto_misc:
-   %cm_submenu("Misc", #MiscMenu)
+    %cm_submenu("Misc", #MiscMenu)
 
 mm_goto_infohud:
-   %cm_submenu("Infohud", #InfoHudMenu)
+    %cm_submenu("Infohud", #InfoHudMenu)
 
 mm_goto_gamemenu:
     %cm_submenu("Game", #GameMenu)
 
 mm_goto_rngmenu:
-   %cm_submenu("RNG Control", #RngMenu)
+    %cm_submenu("RNG Control", #RngMenu)
 
 mm_goto_ctrlsmenu:
-   %cm_submenu("Controller Shortcuts", #CtrlMenu)
+    %cm_submenu("Controller Shortcuts", #CtrlMenu)
 
 
 ; -------------
@@ -176,7 +176,7 @@ mm_goto_ctrlsmenu:
 ; -------------
 pushpc
 
-org $fe8000
+org $FE8000
 incsrc presets/routea_menu.asm
 incsrc presets/routeb_menu.asm
 incsrc presets/hundo_menu.asm
@@ -185,7 +185,7 @@ incsrc presets/hundo_menu.asm
 ; incsrc presets/kpdr25_menu.asm
 ; incsrc presets/gtclassic_menu.asm
 
-; org $ff8000
+; org $FF8000
 ; incsrc presets/14ice_menu.asm
 ; incsrc presets/14speed_menu.asm
 ; incsrc presets/allbosskpdr_menu.asm
@@ -238,13 +238,13 @@ eq_refill:
     RTS
 
 eq_toggle_category:
-  %cm_submenu("Toggle Category", #ToggleCategoryMenu)
+    %cm_submenu("Toggle Category", #ToggleCategoryMenu)
 
 eq_goto_toggleitems:
-   %cm_submenu("Toggle Items", #ToggleItemsMenu)
+    %cm_submenu("Toggle Items", #ToggleItemsMenu)
 
 eq_goto_togglebeams:
-   %cm_submenu("Toggle Beams", #ToggleBeamsMenu)
+    %cm_submenu("Toggle Beams", #ToggleBeamsMenu)
 
 eq_setetanks:
     %cm_numfield("Energy Tanks", !ram_cm_etanks, 0, 14, 1, .routine)
@@ -1121,32 +1121,40 @@ ih_goto_room_strat:
     %cm_submenu("Select Room Strat", #RoomStratMenu)
 
 RoomStratMenu:
-    dw ihstrat_mbhp
+    dw ihstrat_tacotank
+    dw ihstrat_gateglitch
     dw ihstrat_moatcwj
-    dw ihstrat_shinetopb
-    dw ihstrat_botwooncf
-    dw ihstrat_elevatorcf
     dw ihstrat_robotflush
+    dw ihstrat_shinetopb
+    dw ihstrat_elevatorcf
+    dw ihstrat_botwooncf
+    dw ihstrat_mbhp
     dw #$0000
     %cm_header("INFOHUD ROOM STRAT")
 
-ihstrat_mbhp:
-    %cm_jsr("Mother Brain HP", #action_select_room_strat, #$0000)
+ihstrat_tacotank:
+    %cm_jsr("Taco Tank", #action_select_room_strat, #$0000)
+
+ihstrat_gateglitch:
+    %cm_jsr("Gate Glitch", #action_select_room_strat, #$0001)
 
 ihstrat_moatcwj:
-    %cm_jsr("Moat CWJ", #action_select_room_strat, #$0001)
-
-ihstrat_shinetopb:
-    %cm_jsr("Shine to PB", #action_select_room_strat, #$0002)
-
-ihstrat_botwooncf:
-    %cm_jsr("Botwoon Crystal Flash", #action_select_room_strat, #$0003)
-
-ihstrat_elevatorcf:
-    %cm_jsr("Elevator Crystal Flash", #action_select_room_strat, #$0004)
+    %cm_jsr("Moat CWJ", #action_select_room_strat, #$0002)
 
 ihstrat_robotflush:
-    %cm_jsr("Robot Flush", #action_select_room_strat, #$0005)
+    %cm_jsr("Robot Flush", #action_select_room_strat, #$0003)
+
+ihstrat_shinetopb:
+    %cm_jsr("Shine to PB", #action_select_room_strat, #$0004)
+
+ihstrat_elevatorcf:
+    %cm_jsr("Elevator Crystal Flash", #action_select_room_strat, #$0005)
+
+ihstrat_botwooncf:
+    %cm_jsr("Botwoon Crystal Flash", #action_select_room_strat, #$0006)
+
+ihstrat_mbhp:
+    %cm_jsr("Mother Brain HP", #action_select_room_strat, #$0007)
 
 action_select_room_strat:
 {
@@ -1162,12 +1170,14 @@ ih_room_strat:
     dl #!sram_room_strat
     dw #$0000
     db #$28, "Current Strat", #$FF
-    db #$28, "      MB HP", #$FF
+    db #$28, "  TACO TANK", #$FF
+    db #$28, "GATE GLITCH", #$FF
     db #$28, "   MOAT CWJ", #$FF
-    db #$28, "SHINE TO PB", #$FF
-    db #$28, " BOTWOON CF", #$FF
-    db #$28, "ELEVATOR CF", #$FF
     db #$28, "ROBOT FLUSH", #$FF
+    db #$28, "SHINE TO PB", #$FF
+    db #$28, "ELEVATOR CF", #$FF
+    db #$28, " BOTWOON CF", #$FF
+    db #$28, "      MB HP", #$FF
     db #$FF
 
 ih_room_counter:
@@ -1183,9 +1193,9 @@ ih_lag:
     %cm_numfield("Artificial lag", !sram_artificial_lag, 0, 64, 1, #0)
 
 
-; ; ----------
-; ; Game menu
-; ; ----------
+; ----------
+; Game menu
+; ----------
 
 GameMenu:
     dw #game_japanesetext
@@ -1207,9 +1217,9 @@ game_iconcancel:
 game_debugmode:
     %cm_toggle("Debug Mode", $7E05D1, #$0001, #0)
 
-; ; ----------
-; ; RNG menu
-; ; ----------
+; ----------
+; RNG menu
+; ----------
 
 RngMenu:
     if !FEATURE_SD2SNES
