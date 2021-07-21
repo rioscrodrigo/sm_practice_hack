@@ -79,7 +79,7 @@
 
 ; Hooks
 
-org $83B000
+org $83B520
 print pc, " rng start"
 
 hook_hopper_set_rng:

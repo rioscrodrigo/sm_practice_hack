@@ -52,9 +52,9 @@ gamemode_shortcuts:
     AND !ram_ctrl1_filtered : BEQ +
     JMP .kill_enemies
 
-  + LDA !ram_ctrl1 : AND !sram_ctrl_load_last_preset : CMP !sram_ctrl_load_last_preset : BNE +
-    AND !ram_ctrl1_filtered : BEQ +
-    JMP .load_last_preset
+  ; + LDA !ram_ctrl1 : AND !sram_ctrl_load_last_preset : CMP !sram_ctrl_load_last_preset : BNE +
+  ;   AND !ram_ctrl1_filtered : BEQ +
+  ;   JMP .load_last_preset
 
   + LDA !ram_ctrl1 : AND !sram_ctrl_reset_segment_timer : CMP !sram_ctrl_reset_segment_timer : BNE +
     AND !ram_ctrl1_filtered : BEQ +

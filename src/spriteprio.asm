@@ -15,7 +15,7 @@ org $908643
 ; It's a copy so that it only affects Samus, and only adds a single instruction
 ; keeping the change in timing down as much as possible.
 
-org $81ef20
+org $FD8000
 oam_add_samus_sprite_with_prio:
     PHB
     PEA $9200
@@ -90,4 +90,4 @@ oam_add_samus_sprite_with_prio:
     PLB
     RTL
 
-warnpc $81f000
+; warnpc $81f000
