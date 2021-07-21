@@ -89,7 +89,7 @@ preset_category_submenus:
 {
     dw #PresetsMenuRouteA
     dw #PresetsMenuRouteB
-    dw #PresetsMenuHundo
+    ; dw #PresetsMenuHundo
     ; dw #PresetsMenu100early
     ; dw #PresetsMenuRbo
     ; dw #PresetsMenuPkrd
@@ -107,7 +107,7 @@ preset_category_banks:
 {
     dw #PresetsMenuRouteA>>16
     dw #PresetsMenuRouteB>>16
-    dw #PresetsMenuHundo>>16
+    ; dw #PresetsMenuHundo>>16
     ; dw #PresetsMenu100early>>16
     ; dw #PresetsMenuRbo>>16
     ; dw #PresetsMenuPkrd>>16
@@ -138,7 +138,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM REIMAGINED PH 0.1")
+    %cm_header("SM REIMAGINED v0.2")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -179,7 +179,7 @@ pushpc
 org $FE8000
 incsrc presets/routea_menu.asm
 incsrc presets/routeb_menu.asm
-incsrc presets/hundo_menu.asm
+; incsrc presets/hundo_menu.asm
 ; incsrc presets/100early_menu.asm
 ; incsrc presets/rbo_menu.asm
 ; incsrc presets/kpdr25_menu.asm
@@ -295,7 +295,7 @@ eq_setpbs:
 ; ---------------------
 
 ToggleCategoryMenu:
-   dw #cat_100
+;   dw #cat_100
    dw #cat_any_a
    dw #cat_any_b
 ;    dw #cat_14ice
@@ -308,14 +308,14 @@ ToggleCategoryMenu:
    %cm_header("TOGGLE CATEGORY")
 
 
-cat_100:
-    %cm_jsr("100%", action_category, #$0000)
+;cat_100:
+;    %cm_jsr("100%", action_category, #$0000)
 
 cat_any_a:
-    %cm_jsr("Any% Route A", action_category, #$0001)
+    %cm_jsr("Any% Route A", action_category, #$0000)
 
 cat_any_b:
-    %cm_jsr("Any% Route B", action_category, #$0002)
+    %cm_jsr("Any% Route B", action_category, #$0001)
 
 ; cat_14ice:
 ;     %cm_jsr("14% Ice", action_category, #$0003)
@@ -333,7 +333,7 @@ cat_any_b:
 ;     %cm_jsr("Any% glitched", action_category, #$0007)
 
 cat_nothing:
-    %cm_jsr("Nothing", action_category, #$0003)
+    %cm_jsr("Nothing", action_category, #$0002)
 
 
 action_category:
@@ -473,9 +473,9 @@ tb_plasmabeam:
 
 SelectPresetCategoryMenu:
     dw #precat_current
-    dw #precat_a
-    dw #precat_b
-    dw #precat_hundo
+    dw #precat_routea
+    dw #precat_routeb
+    ; dw #precat_hundo
     ; dw #precat_100early
     ; dw #precat_rbo
     ; dw #precat_pkrd
@@ -494,9 +494,9 @@ precat_current:
     dl #!sram_preset_category
     dw #$0000
     db #$28, "CURRENT PRESET", #$FF
-        db #$28, "          A", #$FF ; Note the "y" ;)
-        db #$28, "          B", #$FF
-        db #$28, "        100", #$FF
+        db #$28, "    ROUTE A", #$FF ; Note the "y" ;)
+        db #$28, "    ROUTE B", #$FF
+        ; db #$28, "        100", #$FF
         ; db #$28, "  100 EARLY", #$FF
         ; db #$28, "        RBO", #$FF
         ; db #$28, "       PKRD", #$FF
@@ -510,14 +510,14 @@ precat_current:
     db #$FF
     db #$FF
 
-precat_a:
-    %cm_jsr("Any% A Route", #action_select_preset_category, #$0000)
+precat_routea:
+    %cm_jsr("Any% Route A", #action_select_preset_category, #$0000)
 
-precat_b:
-    %cm_jsr("Any% B Route", #action_select_preset_category, #$0001)
+precat_routeb:
+    %cm_jsr("Any% Route B", #action_select_preset_category, #$0001)
 
-precat_hundo:
-    %cm_jsr("100%", #action_select_preset_category, #$0002)
+;precat_hundo:
+;    %cm_jsr("100%", #action_select_preset_category, #$0002)
 
 ; precat_100early:
 ;     %cm_jsr("100% Early Crocomire", #action_select_preset_category, #$0003)
